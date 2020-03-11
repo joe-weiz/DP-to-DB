@@ -7,7 +7,6 @@ Created on Fri Dec 13 16:09:12 2019
 
 from pandas import read_clipboard
 from pandas import melt
-#from datetime import datetime
 
 
 #read the clipboard into a dataframe
@@ -29,11 +28,13 @@ dfmelt['timestamp'] = now
 dfmelt['lazycode'] = sku
 
 #rename account columns
-dfmelt = dfmelt.rename(columns={(now,sku,' '): "Account1", 
-                                (' ', ' ', ' '): "Account2",
-                                'variable_0':'PeriodWeek',
-                                'variable_1':'Datatype_Weekday',
-                                'value':'Demand'})
+dfmelt = dfmelt.rename(columns={
+        (now,sku,' '): "Account1", 
+        (' ', ' ', ' '): "Account2",
+        'variable_0':'PeriodWeek',
+        'variable_1':'Datatype_Weekday',
+        'value':'Demand'
+        })
 
 #I believe this column is useless. It just shows "Value" every row.
 #Comment the line out if you want to keep the column.
